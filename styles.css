@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: flex-start;
+    background-color: rgb(255, 250, 248);
+}
+
+
+
+
+
+#high-score {
+    color: rgb(254, 105, 254);
+}
+
+#high-score-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+#main {
+    position: fixed;
+    left: 50%;
+}
+
+
+#time {
+    position: fixed;
+    left: 85%;
+    top: 1%;
+}
