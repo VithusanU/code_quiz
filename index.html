@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./assets/styles.css">
     <title>Code Quiz</title>
 </head>
 
@@ -36,19 +36,30 @@
             </ul>
         </div>
     </header>
-<!-- This page will display quiz questions and answers to be chosen -->
-<section id="quiz_Page">
-<h1 id="questions"> Test</h1>
-<h2 id="answers"></h2>
-</section>
 
+    <!-- This box will display quiz questions and answers to be chosen -->
+    <section id="quiz_Page" style="display: none;">
+        <h1 id="questions"> Test</h1>
+        <h2 id="answers"> How is the weather?</h2>
+        <h2 id="rightOrWrong"></h2>
+    </section>
 
-<!-- This page will display the highscore page -->
-<section id="high_score_page">
-    <h1 id="hsFont"> Quiz Completed!</h1>
-    <h1 id="highScore"></h1>
-    <h2 id="answers"></h2>
+    <!-- This box will display the highscore page after completing the quiz-->
+    <section id="high_score_SUBMISSION" style="display: none;">
+        <h1 id="hsFont"> Quiz Completed!</h1>
+        <p>Your final Score is : <span id="finalScore">0</span>!</p>
+        <input type="text" name="initials" id="initials" placeholder="Please Enter Your Name">
+        <button id="submitScore">Submit</button>
+    </section>
+
+    <!-- This box wil display after the highscore submitting page -->
+    <section id="high_score_page" style="display: none;">
+        <h1 id="hsFont"> HighScores!</h1>
+        <h1 id="highScore"></h1>
+        <ol id="scores">
+            </h2>
     </section>
 </body>
+<script src="./script.js"></script>
 
 </html>
