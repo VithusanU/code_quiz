@@ -6,6 +6,9 @@ var hspage = document.querySelector('#high_score_page');
 
 // QUERY SELECTOR FOR SPECIFIC FUNC
 var initialInput = document.querySelector("#Initials");
+var clearScores = document.querySelector("#clearScores");
+var submitScores = document.querySelector("submitScore");
+var vwhighscore = document.querySelector("#viewHigh")
 
 // Start Quiz
 var startQuiz = document.querySelector(".start-button");
@@ -65,8 +68,8 @@ const quizQuestions = [
         answers: {
             a: "It is a noun",
             b: "Explains what a function is",
-            c:"‘This’ keyword refers to the object from where it was called.",
-            d:"This creates a timer for a function."
+            c: "‘This’ keyword refers to the object from where it was called.",
+            d: "This creates a timer for a function."
         },
         correctAnswer: "c"
     },
@@ -90,12 +93,194 @@ const quizQuestions = [
             d: "Alert Box, Prompt Box, and Confirm Box.`",
         }
     }
-
-
 ]
 
 
-document.addEventListener("click",)
+function nextQuestion() {
+    var nextQuestion = setInterval(function () {
+        //count up for the questions 
+        questionNumber++;
+
+        clearButtons();
+
+        if (questionNumber === quizQuestions.length) {
+            submitScore();
+            clearInterval(nextQuestion);
+            return;
+        }
+        else {
+            quizGenerate();
+        }
+        clearInterval(nextQuestion);
+    }, 3000)
+
+}
 
 
+function scoreSubmission() {
+    rightOrWrong.textContent = "";
+
+    hsPageSubmission.setAttribute("style", "display:visible");
+    quiz_page.setAttribute("style", "display:hidden");
+
+    timerStop = true;
+    timer = 0;
+
+    finalScore.textContent = score;
+}
+
+
+// Handles the clearing of current OL to new OL on next question
+function clearButtons() {
+    var removeButtons = document.getElementById("answers");
+    removeButtons.remove();
+    var oldEm = document.createElement("ol");
+    oldEm.setAttribute("id", "answers");
+    quiz_page.appendChild(oldEm);
+    answerSelection = document.querySelector("answers");
+}
+
+function clearScoreList() {
+    //removes the ol element containing the highscore values
+    var removeHighscore = document.getElementById("scoreList");
+    removeHighscore.remove();
+
+    //recreate empty ol element
+    var scoreOl = document.createElement("ol");
+    scoreOl.setAttribute("id", "scoreList");
+    highscorePage.insertBefore(scoreOl, highscorePage.children[1])
+    scoreList = document.querySelector("#scoreList");
+}
+
+
+function quizShow() {
+    if (questionNumber > quizQuestions.length) {
+        clearButtons();
+        return;
+    }
+    timerStop = false;
+    //set the text to the current question
+    questionSelection.textContent = quizQuestions[questionNumber].question;
+
+    var buttonNumber = 0;
+    for (answer in quizQuestions[questionNumber].answers) {
+        //generate buttonNumber for comparison later
+        buttonNumber++;
+
+        var liElem = document.createElement("li");
+        answerSelection.appendChild(liElem);
+        answerSelection.setAttribute("style", "list-style: none;");
+        answerSelection.setAttribute("class", "answerList");
+
+        var button = document.createElement("button");
+        button.setAttribute("value", buttonNumber);
+        button.setAttribute("class", "answerButton");
+        button.setAttribute("style", "width: 80%; list-style:none; padding-left:0; text-align: left; position:relative; left:5%");
+
+        button.innerHTML = `${answer}: ${quizQuestions[questionNumber].answers[answer]}`;
+        liElem.appendChild(button);
+    }
+    buttonNumber = 0; //reset buttonNumber value for the next iteration
+
+
+    //event listener to check if answer clicked is correct 
+    answerSelection.addEventListener("click", function (event) {
+        var element = event.target;  //create variable to see which element is being clicked
+
+        //disables all the answer buttons after clicked once 
+        buttons = document.querySelectorAll('button');
+        buttons.forEach((answerButton) => {
+            if (answerButton.getAttribute("class") === "answerButton") {
+                answerButton.setAttribute('disabled', 'true')
+            }
+        });
+
+        const userAnswer = element.getAttribute('value') - 1;
+        const abcd = ["a", "b", "c", "d"];
+
+        //if the element clicked is a button do this 
+        if (element.matches("button") === true) {
+            //if the answer is correct do this 
+            if (abcd[userAnswer] === quizQuestions[questionNumber].correctAnswer) {
+                score++;
+
+                rightOrWrong.textContent = "C O R R E C T"
+                var correctClear = setInterval(function () {
+                    rightOrWrong.textContent = ""
+                    clearInterval(correctClear);
+                }, 2000);
+
+                nextQuestion();
+            }
+            else { //if the answer is incorrect do this 
+                timer = timer - 10;
+
+                rightOrWrong.textContent = "I N C O R R E C T"
+                var wrongClear = setInterval(function () {
+                    rightOrWrong.textContent = ""
+                    clearInterval(wrongClear);
+                }, 3000);
+                nextQuestion();
+            }
+        }
+    })
+
+}
+
+
+startQuiz.addEventListener("click", function () {
+    clearScoreList();
+    clearButtons();
+    questionNumber = 0;
+    score = 0;
+    timer = 120;
+
+    game.setAttribute("style", "display:none");
+
+    quiz_page.setAttribute("style", "display:visible")
+
+    quizGenerate();
+
+
+    timerStart.textContent = timer;
+    var timerCountdown = setInterval(function () {
+        timer--;
+        timerCountdown.textContent = timer;
+
+        if (timer <= 0) {
+            clearInterval(timerCountdown);
+            scoreSubmission();
+        
+        quiz_page.setAttribute("style", "display:visible");
+        hsPageSubmission.setAttribute("style", "display:visible");
+    } else if (timerStop === true) {
+        clearInterval(timerCountdown)
+    }
+}, 1000)
+})
+
+// On score submission, an event clicker is placed so that score and initials are saved on click
+scoreSubmission.addEventListener("click", function(event){
+    event.preventDefault();
+
+    if (initialInput.value === "") {
+        alert("Please enter initials.")
+        return;
+    }
+    recordedscore[0].push(initialInput.value.trim());
+    recordedscore[1].push(score);
+
+    localStorage.setItem("score", JSON.stringify(recordedscore));
+
+    for (var index=0; index <recordedscore[0].length; index++) {
+
+        var showScores = document.createElement("li");
+
+        showScores.textContent = '${recordedScore[0][index]} - ${recordedScore[1][index]}';
+
+        scoreList.appendChild(showScores);
+    }
+    hsPageSubmission.setAttribute("style", "display:none");
+    highscorePage.setAttribute("style","display;visible");
+})
 
