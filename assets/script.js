@@ -10,6 +10,9 @@ var clearScores = document.querySelector("#clearScores");
 var submitScores = document.querySelector("#submitScore");
 var vwhighscore = document.querySelector("#viewHigh");
 var goBack = document.querySelector("#goBack");
+var scoreList = document.querySelector("#scorelist");
+
+var buttons = document.querySelectorAll("button");
 
 // Start Quiz
 var startQuiz = document.querySelector(".start-button");
