@@ -7,8 +7,9 @@ var hspage = document.querySelector('#high_score_page');
 // QUERY SELECTOR FOR SPECIFIC FUNC
 var initialInput = document.querySelector("#Initials");
 var clearScores = document.querySelector("#clearScores");
-var submitScores = document.querySelector("submitScore");
-var vwhighscore = document.querySelector("#viewHigh")
+var submitScores = document.querySelector("#submitScore");
+var vwhighscore = document.querySelector("#viewHigh");
+var goBack = document.querySelector("#goBack");
 
 // Start Quiz
 var startQuiz = document.querySelector(".start-button");
@@ -68,7 +69,7 @@ const quizQuestions = [
         answers: {
             a: "It is a noun",
             b: "Explains what a function is",
-            c: "‘This’ keyword refers to the object from where it was called.",
+            c: "This keyword refers to the object from where it was called.",
             d: "This creates a timer for a function."
         },
         correctAnswer: "c"
@@ -109,7 +110,7 @@ function nextQuestion() {
             return;
         }
         else {
-            quizGenerate();
+            nextQuestion();
         }
         clearInterval(nextQuestion);
     }, 3000)
@@ -239,7 +240,7 @@ startQuiz.addEventListener("click", function () {
 
     quiz_page.setAttribute("style", "display:visible")
 
-    quizGenerate();
+    nextQuestion();
 
 
     timerStart.textContent = timer;
@@ -250,17 +251,17 @@ startQuiz.addEventListener("click", function () {
         if (timer <= 0) {
             clearInterval(timerCountdown);
             scoreSubmission();
-        
-        quiz_page.setAttribute("style", "display:visible");
-        hsPageSubmission.setAttribute("style", "display:visible");
-    } else if (timerStop === true) {
-        clearInterval(timerCountdown)
-    }
-}, 1000)
+
+            quiz_page.setAttribute("style", "display:visible");
+            hsPageSubmission.setAttribute("style", "display:visible");
+        } else if (timerStop === true) {
+            clearInterval(timerCountdown)
+        }
+    }, 1000)
 })
 
 // On score submission, an event clicker is placed so that score and initials are saved on click
-scoreSubmission.addEventListener("click", function(event){
+scoreSubmission.addEventListener("click", function (event) {
     event.preventDefault();
 
     if (initialInput.value === "") {
@@ -272,15 +273,37 @@ scoreSubmission.addEventListener("click", function(event){
 
     localStorage.setItem("score", JSON.stringify(recordedscore));
 
-    for (var index=0; index <recordedscore[0].length; index++) {
+    for (var index = 0; index < recordedscore[0].length; index++) {
 
         var showScores = document.createElement("li");
 
-        showScores.textContent = '${recordedScore[0][index]} - ${recordedScore[1][index]}';
+        showScores.textContent = '${recordedscore[0][index]} - ${recordedscore[1][index]}';
 
         scoreList.appendChild(showScores);
     }
     hsPageSubmission.setAttribute("style", "display:none");
-    highscorePage.setAttribute("style","display;visible");
+    hspage.setAttribute("style", "display;visible");
 })
 
+clearScores.addEventListener("click", function (event) {
+    clearScoreList();
+    recordedscore = [[], []]
+})
+
+goBack.addEventListener("click", function (event) {
+    game.setAttribute("style", "display:visible")
+    highscorePage.setAttribute("style", "display:none");
+})
+
+vwhighscore.addEventListener("click", function (event) {
+    event.preventDefault();
+    timerStop = true;
+
+
+    if (hsPageSubmission.getAttribute("display") === "visible" || highscorePage.getAttribute("display") === "visible") {
+        return;
+    }
+    quiz_page.setAttribute("style", "display:none");
+    game.setAttribute("style", "display:none");
+    highscorePage.setAttribute("style", "display:visible");
+})
