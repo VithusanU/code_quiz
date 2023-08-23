@@ -20,7 +20,7 @@ var startQuiz = document.querySelector(".start-button");
 
 // Timer
 var timer;
-var timerStart = document.querySelector("#time-left");
+var timerStart = document.querySelector("#time_left");
 var timerStop = false;
 
 // Keeping track of score
@@ -110,7 +110,7 @@ function nextQuestion() {
         clearButtons();
 
         if (questionNumber === quizQuestions.length) {
-            submitScore();
+            submitScores();
             clearInterval(nextQuestion);
             return;
         }
