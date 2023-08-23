@@ -8,7 +8,7 @@ var hspage = document.querySelector('#high_score_page');
 var initialInput = document.querySelector("#initials");
 var clearScores = document.querySelector("#clearScores");
 var submitScores = document.querySelector("#submitScore");
-var vwhighscore = document.querySelector("#viewHigh");
+var vwhighscore = document.querySelector("#viewHighScore");
 var goBack = document.querySelector("#goBack");
 var scoreList = document.querySelector("#scorelist");
 
