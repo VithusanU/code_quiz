@@ -13,17 +13,17 @@ I have constructed this quiz as practice in learning various HTML, CSS styling, 
  This coding app has taught me very crucial skills required in coding assessments and technical interviews. 
 
 
- Installation:
+ **Installation**:
  N/A
 
 
 
- Usage
+ **Usage**
+A coding quiz that will assist in testing coding knowledge for job interviews
 
 
 
-
- License
+ **License**
  Refer to license in the repo
 
  
