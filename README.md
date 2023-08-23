@@ -11,3 +11,19 @@ I have constructed this quiz as practice in learning various HTML, CSS styling, 
  
 
  This coding app has taught me very crucial skills required in coding assessments and technical interviews. 
+
+
+ Installation:
+ N/A
+
+
+
+ Usage
+
+
+
+
+ License
+ Refer to license in the repo
+
+ 
