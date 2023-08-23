@@ -5,7 +5,7 @@ var hsPageSubmission = document.querySelector("#high_score_SUBMISSION");
 var hspage = document.querySelector('#high_score_page');
 
 // QUERY SELECTOR FOR SPECIFIC FUNC
-var initialInput = document.querySelector("#Initials");
+var initialInput = document.querySelector("#initials");
 var clearScores = document.querySelector("#clearScores");
 var submitScores = document.querySelector("#submitScore");
 var vwhighscore = document.querySelector("#viewHigh");
