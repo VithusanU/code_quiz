@@ -243,7 +243,7 @@ startQuiz.addEventListener("click", function () {
 
     game.setAttribute("style", "display:none");
 
-    quiz_page.setAttribute("style", "display:visible")
+    quiz_page.setAttribute("style", "display:visible");
 
     nextQuestion();
 
@@ -251,7 +251,7 @@ startQuiz.addEventListener("click", function () {
     timerStart.textContent = timer;
     var timerCountdown = setInterval(function () {
         timer--;
-        timerCountdown.textContent = timer;
+        timerStart.textContent = timer;
 
         if (timer <= 0) {
             clearInterval(timerCountdown);
