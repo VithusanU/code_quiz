@@ -110,7 +110,7 @@ function nextQuestion() {
         clearButtons();
 
         if (questionNumber === quizQuestions.length) {
-            submitScores();
+            scoreSubmission();
             clearInterval(nextQuestion);
             return;
         }
@@ -282,7 +282,7 @@ submitScores.addEventListener("click", function (event) {
 
         var showScores = document.createElement("li");
 
-        showScores.textContent = '${recordedscore[0][index]} - ${recordedscore[1][index]}';
+        showScores.textContent = `${recordedscore[0][index]} - ${recordedscore[1][index]}`;
 
         scoreList.appendChild(showScores);
     }
