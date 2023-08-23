@@ -19,7 +19,7 @@ var startQuiz = document.querySelector(".start-button");
 
 // Timer
 var timer;
-var timerStart = document.querySelector("time-left");
+var timerStart = document.querySelector("#time-left");
 var timerStop = false;
 
 // Keeping track of score
@@ -28,8 +28,8 @@ var score = 0;
 var questionNumber = 0;
 
 // Query Selector for questions, right or wrong answers
-var questionSelection = document.querySelector("questions");
-var answerSelection = document.querySelector("answers");
+var questionSelection = document.querySelector("#questions");
+var answerSelection = document.querySelector("#answers");
 var rightOrWrong = document.querySelector("#rightOrWrong");
 
 
