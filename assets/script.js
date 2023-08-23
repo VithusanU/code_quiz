@@ -127,7 +127,7 @@ function scoreSubmission() {
     rightOrWrong.textContent = "";
 
     hsPageSubmission.setAttribute("style", "display:visible");
-    quiz_page.setAttribute("style", "display:hidden");
+    quiz_page.setAttribute("style", "display:none");
 
     timerStop = true;
     timer = 0;
