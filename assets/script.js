@@ -12,6 +12,7 @@ var vwhighscore = document.querySelector("#viewHigh");
 var goBack = document.querySelector("#goBack");
 var scoreList = document.querySelector("#scorelist");
 
+//Query Selector for buttons
 var buttons = document.querySelectorAll("button");
 
 // Start Quiz
