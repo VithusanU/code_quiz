@@ -20,7 +20,7 @@ var startQuiz = document.querySelector(".start-button");
 
 // Timer
 var timer;
-var timerStart = document.querySelector("#time-left");
+var timerStart = document.querySelector("#time_left");
 var timerStop = false;
 
 // Keeping track of score
@@ -95,8 +95,9 @@ const quizQuestions = [
             a: "There are none.",
             b: "Prompt Box, Equality Box, Initial Box.",
             c: "Alert Box, View Box and Tune Box.",
-            d: "Alert Box, Prompt Box, and Confirm Box.`",
-        }
+            d: "Alert Box, Prompt Box, and Confirm Box.",
+        },
+        correctAnswer:  "d"
     }
 ]
 
@@ -109,7 +110,7 @@ function nextQuestion() {
         clearButtons();
 
         if (questionNumber === quizQuestions.length) {
-            submitScore();
+            submitScores();
             clearInterval(nextQuestion);
             return;
         }
