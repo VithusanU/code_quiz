@@ -118,7 +118,7 @@ function nextQuestion() {
             quizShow();
         }
         clearInterval(nextQuestion);
-    }, 3000)
+    }, 1000)
 
 }
 
