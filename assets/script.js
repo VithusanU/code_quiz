@@ -95,8 +95,9 @@ const quizQuestions = [
             a: "There are none.",
             b: "Prompt Box, Equality Box, Initial Box.",
             c: "Alert Box, View Box and Tune Box.",
-            d: "Alert Box, Prompt Box, and Confirm Box.`",
-        }
+            d: "Alert Box, Prompt Box, and Confirm Box.",
+        },
+        correctAnswer:  "d"
     }
 ]
 
