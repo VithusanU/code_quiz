@@ -152,7 +152,7 @@ function clearScoreList() {
     //recreate empty ol element
     var scoreOl = document.createElement("ol");
     scoreOl.setAttribute("id", "scoreList");
-    highscorePage.insertBefore(scoreOl, highscorePage.children[1])
+    hspage.insertBefore(scoreOl, hspage.children[1])
     scoreList = document.querySelector("#scoreList");
 }
 
