@@ -114,7 +114,7 @@ function nextQuestion() {
             return;
         }
         else {
-            nextQuestion();
+            quizShow();
         }
         clearInterval(nextQuestion);
     }, 3000)
