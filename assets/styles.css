@@ -16,7 +16,7 @@ body {
 }
 
 
-button {
+.start-button {
     background:radial-gradient(circle, rgb(97, 210, 32), white, rgb(59, 215, 98), rgb(15, 87, 13));
     border-radius: 8px;
     color: #13293d;

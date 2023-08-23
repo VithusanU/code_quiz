@@ -142,7 +142,7 @@ function clearButtons() {
     var oldEm = document.createElement("ol");
     oldEm.setAttribute("id", "answers");
     quiz_page.appendChild(oldEm);
-    answerSelection = document.querySelector("answers");
+    answerSelection = document.querySelector("#answers");
 }
 
 function clearScoreList() {
