@@ -264,7 +264,7 @@ startQuiz.addEventListener("click", function () {
 })
 
 // On score submission, an event clicker is placed so that score and initials are saved on click
-scoreSubmission.addEventListener("click", function (event) {
+submitScores.addEventListener("click", function (event) {
     event.preventDefault();
 
     if (initialInput.value === "") {
